@@ -1,0 +1,25 @@
+void setup ( ) {
+//Se declaran 5 pines para las luces led
+pinMode (13, OUTPUT) ;
+pinMode (12, OUTPUT) ;
+pinMode (11, OUTPUT) ;
+pinMode (9, OUTPUT) ;
+pinMode (8, OUTPUT) ;
+}
+void loop(){
+digitalWrite(13,HIGH);
+digitalWrite(8,HIGH);
+delay(5000);// Se enciende las luz roja del semaforo triple y la luz verde del semaforo doble por 5 segundos
+digitalWrite(8,LOW);
+delay(1000);// Mientras la luz roja del semaforo triple sigue encendida, se apaga la verde del semaforo doble por un segundo
+digitalWrite(13,LOW);
+digitalWrite(12,HIGH);
+delay(2000);// Se apaga la luz roja y se enciende la amarilla del semaforo triple por 2 segundos, el semaforo doble sigue con las luces apagadas
+digitalWrite(12,LOW);
+digitalWrite(11,HIGH);
+digitalWrite(9,HIGH);
+delay(5000);// Se apaga la luz amarilla y se enciende la verde del semaforo triple, se enciende la roja del semaforo doble, esto dura 5 segundos
+digitalWrite(11,LOW);
+digitalWrite(9,LOW);
+delay(1000);// Se apagan las luces de los semaforos por un segundo
+}
