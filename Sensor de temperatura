@@ -26,10 +26,10 @@ void loop(){
   Serial.print("\n");
 
   //Enciende y apaga los LEDs segun corresponda a cada condición
-  if(humedad>50){
+  if(humedad>60){
     digitalWrite(11, HIGH);
   }
-  if(humedad<50){
+  if(humedad<60){
     digitalWrite(11, LOW);
   }
   if(temperatura>25){
