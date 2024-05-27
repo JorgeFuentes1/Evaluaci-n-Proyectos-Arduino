@@ -1,0 +1,41 @@
+#include <DHT.h> //Incluye la biblioteca que nos permite usar el sensor
+#define DHTTYPE DHT11 //Declara el tipo de sesor y su pin
+#define DHTPIN 9
+
+DHT dht(DHTPIN, DHTTYPE); //Declara la función del sensor
+
+void setup(){
+  Serial.begin(9600);
+  dht.begin();
+  pinMode(11,OUTPUT);
+  pinMode(12,OUTPUT);
+}
+void loop(){
+  delay(2000);// Una espera razonable
+  float humedad = dht.readHumidity(); //Actualiza la variable humedad
+  float temperatura = dht.readTemperature(); //Actualiza la variable temperatura
+  if(isnan(humedad) || isnan(temperatura)){ //En caso de no capturar nada, avisará
+    Serial.println("ERROR EN EL SENSOR");
+    return;
+  }
+  //Imprime los valores de temperatura y humedad
+  Serial.print("Humedad: ");
+  Serial.print(humedad);
+  Serial.print("Temperatura: ");
+  Serial.print(temperatura);
+  Serial.print("\n");
+
+  //Enciende y apaga los LEDs segun corresponda a cada condición
+  if(humedad>50){
+    digitalWrite(11, HIGH);
+  }
+  if(humedad<50){
+    digitalWrite(11, LOW);
+  }
+  if(temperatura>25){
+    digitalWrite(12, HIGH);
+  }
+  if(temperatura<25){
+    digitalWrite(12, LOW);
+  }
+}
